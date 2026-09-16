@@ -24,7 +24,11 @@ export default function Hero({ onShopNow, onExploreDeals }) {
           <div className="hero-centered-content">
             <div className="hero-text-block">
               <h1 className="hero-title-figma">
-                Powerful PC Parts. Smarter Prices.
+                <span className="hero-title-desktop-prefix">Powerful PC Parts. </span>
+                <span className="hero-title-main">
+                  <span className="hero-title-word">Smarter</span>{' '}
+                  <span className="hero-title-word">Prices.</span>
+                </span>
               </h1>
               <p className="hero-subtext-figma">
                 Certified refurbished components tested for performance and reliability
@@ -116,10 +120,10 @@ export default function Hero({ onShopNow, onExploreDeals }) {
           {/* Bottom Yellow Ticker Strip */}
           <div className="hero-bottom-yellow-strip">
             <span className="strip-item">
-              &quot;Certified Refurbished PC Parts - Save Up to 40 %&quot;
+              &ldquo;Certified Refurbished PC Parts &ndash; Save Up to 40 %&rdquo;
             </span>
             <span className="strip-item">
-              &quot;Up to 12 months warranty&quot;
+              &ldquo;Up to 12 months warranty&rdquo;
             </span>
           </div>
         </div>
