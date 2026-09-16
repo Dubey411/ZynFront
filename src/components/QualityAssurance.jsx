@@ -10,6 +10,7 @@ export default function QualityAssurance() {
       <div className="refurb-grid-frame-14418">
         {/* 1. Top-Left Box: Frame 14414 (200.5px x 158.5px) */}
         <div className="refurb-corner-card card-top-left">
+          <span className="refurb-step-badge">Used</span>
           <p className="refurb-card-text">
             We carefully source pre-owned, open-box, and enterprise hardware from
             trusted channels.
@@ -18,25 +19,28 @@ export default function QualityAssurance() {
 
         {/* 2. Top-Right Box: (200.5px x 158.5px) */}
         <div className="refurb-corner-card card-top-right">
+          <span className="refurb-step-badge">Tested</span>
           <p className="refurb-card-text">
             Every component undergoes multi-point stress, voltage, and thermal
             benchmark checks.
           </p>
         </div>
 
-        {/* 3. Bottom-Left Box: (200.5px x 158.5px) */}
-        <div className="refurb-corner-card card-bottom-left">
-          <p className="refurb-card-text">
-            Cleaned, safely packed in anti-static protective gear, and ready to
-            power your setup.
-          </p>
-        </div>
-
-        {/* 4. Bottom-Right Box: (200.5px x 158.5px) */}
+        {/* 3. Bottom-Right Box: (200.5px x 158.5px) - Certified */}
         <div className="refurb-corner-card card-bottom-right">
+          <span className="refurb-step-badge">Certified</span>
           <p className="refurb-card-text">
             Only component that pass 100% of our strict quality standards receive
             our stamp of approval
+          </p>
+        </div>
+
+        {/* 4. Bottom-Left Box: (200.5px x 158.5px) - Ready to Ship */}
+        <div className="refurb-corner-card card-bottom-left">
+          <span className="refurb-step-badge">Ready to Ship</span>
+          <p className="refurb-card-text">
+            Cleaned, safely packed in anti-static protective gear, and ready to
+            power your setup.
           </p>
         </div>
 
