@@ -1449,6 +1449,10 @@ input, select {
   justify-content: flex-start;
 }
 
+.refurb-step-badge {
+  display: none;
+}
+
 /* Card Text: Poppins Regular 16px, Line-height 120%, Width 166.5px, Height 95px, #000000 */
 .refurb-card-text {
   font-family: var(--font-primary);
@@ -3418,114 +3422,599 @@ input, select {
     display: flex;
   }
 
+  .container {
+    padding: 0 16px;
+  }
+
+  /* 1. Hero Banner Mobile */
+  .hero-container-wrapper {
+    padding: 0 12px;
+  }
+
   .hero-banner-container {
     height: auto;
-    min-height: 540px;
-    padding-bottom: 12px;
+    min-height: 520px;
+    padding: 0 16px;
+    justify-content: space-between;
+  }
+
+  .hero-centered-content {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: unset;
+    justify-content: flex-start;
+    padding: 36px 0 20px 0;
+    margin: 0;
+    gap: 18px;
+  }
+
+  .hero-text-block {
+    gap: 12px;
+    width: 100%;
   }
 
   .hero-title-figma {
-    font-size: 28px;
+    font-size: 30px;
+    line-height: 1.15;
+    padding: 0 4px;
+  }
+
+  .hero-subtext-figma {
+    font-size: 14px;
+    line-height: 1.4;
+    padding: 0 8px;
   }
 
   .hero-buttons-row {
     flex-direction: column;
     width: 100%;
+    max-width: 280px;
+    gap: 10px;
+    height: auto;
   }
 
   .btn-hero-white,
   .btn-hero-trans {
     width: 100%;
-  }
-
-  .hero-chat-container {
-    right: 16px;
-    bottom: 90px;
+    min-width: unset;
+    height: 44px;
+    font-size: 14px;
   }
 
   .hero-bottom-yellow-strip {
     width: 100%;
-    margin: 0;
-    border-radius: 8px 8px 0 0;
     height: auto;
+    padding: 10px 14px;
     flex-direction: column;
     gap: 6px;
-    text-align: center;
-    padding: 10px 16px;
+    border-radius: 8px 8px 0 0;
   }
 
   .hero-bottom-yellow-strip .strip-item {
-    font-size: 13px;
+    font-size: 12px;
     white-space: normal;
+    line-height: 1.3;
+    text-align: center;
   }
 
-  .products-grid-5col {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+  .hero-chat-container {
+    right: 14px;
+    bottom: 76px;
   }
 
-  .newsletter-flex {
+  /* 2. Catalog Section Mobile (Filter + Categories + Best Sellers) */
+  .catalog-section {
+    padding: 24px 0 40px;
+  }
+
+  .catalog-master-layout {
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    gap: 24px;
+    width: 100%;
   }
 
-  .newsletter-input-group {
-    min-width: 100%;
+  .catalog-left-sidebar {
+    width: 100%;
   }
 
-  .footer-columns-grid {
+  .filter-accordion-card {
+    width: 100%;
+    max-width: 100%;
+    position: static;
+    box-sizing: border-box;
+  }
+
+  .catalog-main-area {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .categories-block-card {
+    width: 100%;
+    max-width: 100%;
+    gap: 14px;
+  }
+
+  .categories-heading-figma {
+    font-size: 20px;
+  }
+
+  .category-cards-scroll {
+    width: 100%;
+    padding-bottom: 10px;
+    gap: 10px;
+  }
+
+  .category-item-card {
+    width: 86px;
+    min-width: 86px;
+    height: 112px;
+    min-height: 112px;
+    padding: 6px;
+  }
+
+  .category-img-box {
+    height: 68px;
+  }
+
+  .category-label {
+    font-size: 11px;
+    max-width: 74px;
+  }
+
+  /* Best Seller Product Grid Mobile */
+  .best-seller-container {
+    width: 100%;
+    gap: 20px;
+  }
+
+  .best-seller-title-figma {
+    font-size: 24px;
+    min-height: auto;
+  }
+
+  .best-seller-products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+  }
+
+  .product-card {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    min-height: auto;
+    padding: 10px 8px;
+    gap: 6px;
+    box-sizing: border-box;
+  }
+
+  .product-image-container {
+    height: 110px;
+  }
+
+  .product-title {
+    font-size: 12px;
+    line-height: 1.35;
+    height: 32px;
+  }
+
+  .product-condition {
+    font-size: 9px;
+    line-height: 10px;
+  }
+
+  .product-price-frame-14360 {
+    gap: 2px;
+    width: 100%;
+  }
+
+  .product-price-row-1 {
+    flex-wrap: wrap;
+    gap: 2px;
+    min-height: auto;
+    align-items: baseline;
+    width: 100%;
+  }
+
+  .product-sale-price {
+    font-size: 15px;
+  }
+
+  .product-rating-inline {
+    gap: 2px;
+  }
+
+  .star-icon-black {
+    font-size: 11px;
+  }
+
+  .rating-score-num {
+    font-size: 11px;
+  }
+
+  .product-wishlist-btn svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .product-price-row-2 {
+    gap: 4px;
+    min-height: auto;
+    width: 100%;
+  }
+
+  .product-orig-price {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  .product-save-badge {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  .btn-card-add-cart {
+    height: 32px;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+  /* 3. Refurbishment Process (QA Diagram) Mobile */
+  .frame-14433-section {
+    padding: 36px 16px;
+  }
+
+  .frame-14433-container {
+    gap: 36px;
+    width: 100%;
+  }
+
+  .refurb-process-frame-14419 {
+    width: 100%;
+    gap: 20px;
+  }
+
+  .refurb-process-title {
+    font-size: 24px;
+    min-height: auto;
+    text-align: center;
+  }
+
+  .refurb-grid-frame-14418 {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: static;
+    margin: 0;
+  }
+
+  .refurb-corner-card {
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-sizing: border-box;
+  }
+
+  .refurb-card-text {
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .refurb-svg-cycle-full,
+  .refurb-pill-bar {
+    display: none !important;
+  }
+
+  .refurb-step-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFE27A;
+    color: #000000;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 13px;
+    padding: 4px 12px;
+    border-radius: 6px;
+    margin-bottom: 4px;
+    box-shadow: 0 1px 3px rgba(255, 226, 122, 0.4);
+    align-self: flex-start;
+  }
+
+  /* 4. FAQ Mobile */
+  .faq-frame-14397 {
+    width: 100%;
+    gap: 20px;
+  }
+
+  .faq-heading-figma {
+    font-size: 24px;
+    min-height: auto;
+    text-align: center;
+  }
+
+  .faq-accordion-group-14396 {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .faq-item-card {
+    width: 100%;
+    padding: 12px 14px;
+  }
+
+  .faq-question-text {
+    font-size: 14px;
+  }
+
+  .faq-answer-text {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  /* 5. Deals Banner Mobile */
+  .deals-section {
+    padding: 36px 0;
+  }
+
+  .deals-master-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .deal-card-left-figma,
+  .deal-card-cabinet-figma {
+    width: 100%;
+    height: 380px;
+    padding: 20px 16px;
+    border-radius: 12px;
+    box-sizing: border-box;
+  }
+
+  .deal-text-deals {
+    font-size: 34px;
+  }
+
+  .deal-text-on {
+    font-size: 18px;
+  }
+
+  .deal-text-monitors {
+    font-size: 40px;
+  }
+
+  .deal-text-deals-cabinet {
+    font-size: 30px;
+  }
+
+  .deal-text-on-cabinet {
+    font-size: 16px;
+  }
+
+  .deal-text-cabinet {
+    font-size: 36px;
   }
 
   .deal-hover-perks-popup {
     width: calc(100% - 24px);
-    padding: 14px 12px;
-    bottom: 16px;
+    padding: 12px 10px;
+    bottom: 14px;
   }
 
   .deal-perks-grid-figma {
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    gap: 6px;
   }
 
   .deal-perk-card-figma {
-    min-height: 84px;
-    padding: 10px 6px;
+    min-height: 76px;
+    padding: 8px 4px;
   }
 
   .deal-perk-label {
-    font-size: 12px;
+    font-size: 11px;
   }
 
-  .deal-card-left-figma {
-    padding: 24px 20px;
-    height: 440px;
+  .deal-banner-bottom-figma {
+    width: 100%;
+    height: auto;
+    min-height: 160px;
+    padding: 12px;
+    border-radius: 12px;
+    box-sizing: border-box;
   }
 
-  .deal-text-deals {
-    font-size: 44px;
+  .deal-banner-white-card {
+    width: 100%;
+    height: auto;
+    padding: 12px;
+    gap: 10px;
+    box-sizing: border-box;
   }
 
-  .deal-text-on {
-    font-size: 22px;
+  .deal-quote-yellow-pill {
+    width: 100%;
+    height: auto;
+    padding: 8px 12px;
+    box-sizing: border-box;
   }
 
-  .deal-text-monitors {
-    font-size: 52px;
+  .deal-quote-yellow-pill span {
+    font-size: 13px;
+    line-height: 1.3;
+    text-align: center;
   }
 
-  .deal-text-deals-cabinet {
-    font-size: 40px;
+  .deal-view-all-btn {
+    width: 100%;
+    max-width: 200px;
+    height: 40px;
+    font-size: 13px;
   }
 
-  .deal-text-on-cabinet {
+  /* 6. Customer Reviews Mobile */
+  .reviews-section-figma {
+    padding: 40px 0 50px;
+  }
+
+  .reviews-frame-14375 {
+    padding: 0 16px;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .reviews-title-figma {
+    font-size: 24px;
+    min-height: auto;
+    text-align: center;
+  }
+
+  .reviews-row-14374 {
+    gap: 12px;
+    padding-bottom: 8px;
+    width: 100%;
+  }
+
+  .customer-review-card-figma {
+    flex: 0 0 270px;
+    width: 270px;
+    padding: 14px;
+  }
+
+  .reviews-view-all-btn {
+    height: 40px;
+    font-size: 13px;
+  }
+
+  /* 7. Footer Mobile */
+  .site-footer-figma {
+    width: 100%;
+    padding: 0;
+  }
+
+  .bottom-navbar-frame {
+    flex-direction: column;
+    padding: 36px 16px 28px;
+    gap: 32px;
+    align-items: center;
+    width: 100%;
+    min-height: auto;
+    box-sizing: border-box;
+  }
+
+  .footer-left-frame-14368 {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .footer-newsletter-frame-14322 {
+    width: 100%;
+    min-height: auto;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .footer-heading-frame-14373 {
+    width: 100%;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .footer-title-figma {
     font-size: 20px;
+    line-height: 1.25;
+    text-align: center;
   }
 
-  .deal-text-cabinet {
-    font-size: 48px;
+  .footer-subtitle-figma {
+    font-size: 13px;
   }
 
+  .footer-newsletter-form {
+    width: 100%;
+    align-items: center;
+  }
+
+  .footer-input-row-14324 {
+    width: 100%;
+    max-width: 320px;
+    padding: 0;
+    flex-direction: column;
+    gap: 10px;
+    height: auto;
+  }
+
+  .footer-input-frame-14323 {
+    width: 100%;
+    height: 40px;
+  }
+
+  .footer-subscribe-btn-14365 {
+    width: 100%;
+    height: 40px;
+  }
+
+  .footer-social-frame-14367 {
+    width: 100%;
+    align-items: center;
+    margin: 0 auto;
+    gap: 14px;
+  }
+
+  .footer-right-columns {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 28px;
+    text-align: center;
+  }
+
+  .footer-links-group-14372 {
+    width: 100%;
+    justify-content: space-around;
+    gap: 16px;
+    text-align: left;
+  }
+
+  .footer-col-title-14370 {
+    font-size: 15px;
+    text-align: left;
+  }
+
+  .footer-app-col-14380 {
+    width: 100%;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .footer-app-title-frame-14383 {
+    align-items: center;
+    width: 100%;
+  }
+
+  .footer-app-title {
+    text-align: center;
+  }
+
+  .footer-app-btns-14379 {
+    justify-content: center;
+  }
+
+  /* Modal Mobile */
   .modal-grid {
     grid-template-columns: 1fr;
   }
@@ -3537,32 +4026,40 @@ input, select {
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 16px;
+    padding: 0 12px;
   }
 
-  .products-grid-5col {
-    grid-template-columns: 1fr;
+  .hero-title-figma {
+    font-size: 26px;
+  }
+
+  .hero-subtext-figma {
+    font-size: 13px;
+  }
+
+  .best-seller-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .product-card {
+    padding: 8px 6px;
+  }
+
+  .product-image-container {
+    height: 95px;
+  }
+
+  .product-sale-price {
+    font-size: 14px;
   }
 
   .deal-perks-ribbon {
     display: none;
   }
 
-  .reviews-carousel-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .reviews-frame-14375 {
-    padding: 0 16px;
-    gap: 24px;
-  }
-
-  .reviews-title-figma {
-    font-size: 26px;
-  }
-
   .customer-review-card-figma {
-    flex: 0 0 280px;
-    width: 280px;
+    flex: 0 0 250px;
+    width: 250px;
   }
 }
