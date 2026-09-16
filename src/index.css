@@ -1725,6 +1725,7 @@ input, select {
 
 /* On hover: text box size decreases and shifts to corner of card */
 .deal-card-left-figma:hover .deal-text-frame-14405,
+.deal-card-left-figma.is-active .deal-text-frame-14405,
 .deal-card-left-figma:focus-within .deal-text-frame-14405 {
   transform: scale(0.76) translate(-20px, -20px);
 }
@@ -1775,6 +1776,7 @@ input, select {
 
 /* Line collapses into middle and disappears when hovered */
 .deal-card-left-figma:hover .deal-gradient-line-14406,
+.deal-card-left-figma.is-active .deal-gradient-line-14406,
 .deal-card-left-figma:focus-within .deal-gradient-line-14406 {
   transform: scaleX(0);
   opacity: 0;
@@ -1800,6 +1802,7 @@ input, select {
 
 /* On hover: MONITORS moves up to touch where that line was */
 .deal-card-left-figma:hover .deal-text-monitors,
+.deal-card-left-figma.is-active .deal-text-monitors,
 .deal-card-left-figma:focus-within .deal-text-monitors {
   transform: translateY(-8px);
 }
@@ -1836,7 +1839,8 @@ input, select {
   pointer-events: auto;
 }
 
-.deal-card-left-figma:hover .deal-card-overlay {
+.deal-card-left-figma:hover .deal-card-overlay,
+.deal-card-left-figma.is-active .deal-card-overlay {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.45) 100%);
 }
 
@@ -1967,7 +1971,8 @@ input, select {
   pointer-events: auto;
 }
 
-.deal-card-cabinet-figma:hover .deal-card-overlay {
+.deal-card-cabinet-figma:hover .deal-card-overlay,
+.deal-card-cabinet-figma.is-active .deal-card-overlay {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.45) 100%);
 }
 
@@ -2041,6 +2046,7 @@ input, select {
 
 /* On hover: text box size decreases slightly and stays naturally aligned in top-left */
 .deal-card-cabinet-figma:hover .deal-text-frame-cabinet,
+.deal-card-cabinet-figma.is-active .deal-text-frame-cabinet,
 .deal-card-cabinet-figma:focus-within .deal-text-frame-cabinet {
   transform: scale(0.82) translate(0, 0);
 }
@@ -2080,6 +2086,7 @@ input, select {
 
 /* Line collapses into middle and disappears when hovered */
 .deal-card-cabinet-figma:hover .deal-gradient-line-cabinet,
+.deal-card-cabinet-figma.is-active .deal-gradient-line-cabinet,
 .deal-card-cabinet-figma:focus-within .deal-gradient-line-cabinet {
   transform: scaleX(0);
   opacity: 0;
@@ -2104,6 +2111,7 @@ input, select {
 
 /* On hover: CABINET moves up to touch where that line was */
 .deal-card-cabinet-figma:hover .deal-text-cabinet,
+.deal-card-cabinet-figma.is-active .deal-text-cabinet,
 .deal-card-cabinet-figma:focus-within .deal-text-cabinet {
   transform: translateY(-8px);
 }
@@ -3588,9 +3596,19 @@ input, select {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  }
+
+  .btn-hero-white:hover,
+  .btn-hero-white:active {
+    background-color: #F8FAFC;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
   }
 
   .btn-hero-trans {
+    position: relative;
+    overflow: hidden;
     width: 160px;
     max-width: 100%;
     height: 42px;
@@ -3606,6 +3624,13 @@ input, select {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  }
+
+  .btn-hero-trans:hover,
+  .btn-hero-trans:active {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
   }
 
   .hero-bottom-yellow-strip {
@@ -3775,6 +3800,13 @@ input, select {
     justify-content: flex-start;
     gap: 8px;
     flex-shrink: 0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+
+  .category-item-card:hover,
+  .category-item-card:active {
+    transform: translateY(-2px);
   }
 
   .category-item-card.active {
@@ -3854,6 +3886,13 @@ input, select {
     padding: 10px 8px;
     gap: 6px;
     box-sizing: border-box;
+    transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+  }
+
+  .product-card:hover,
+  .product-card:active {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 3px 8px rgba(0, 0, 0, 0.05);
+    border-color: rgba(226, 232, 240, 0.9);
   }
 
   .product-image-container {
@@ -3900,6 +3939,15 @@ input, select {
     font-size: 11px;
   }
 
+  .product-wishlist-btn {
+    transition: transform 0.15s ease;
+  }
+
+  .product-wishlist-btn:hover,
+  .product-wishlist-btn:active {
+    transform: scale(1.2);
+  }
+
   .product-wishlist-btn svg {
     width: 15px;
     height: 15px;
@@ -3925,6 +3973,20 @@ input, select {
     height: 32px;
     font-size: 12px;
     margin-top: 4px;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  }
+
+  .btn-card-add-cart:hover {
+    background-color: #F8FAFC;
+    border-color: #CBD5E1;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.10);
+    transform: translateY(-1px);
+  }
+
+  .btn-card-add-cart:active {
+    background-color: #E2E8F0;
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   }
 
   /* 3. Refurbishment Process (QA Diagram) Mobile */
@@ -3967,6 +4029,13 @@ input, select {
     flex-direction: column;
     gap: 6px;
     box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .refurb-corner-card:hover,
+  .refurb-corner-card:active {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
   }
 
   .refurb-card-text {
@@ -4082,13 +4151,24 @@ input, select {
 
   .deal-text-frame-14405,
   .deal-text-frame-cabinet {
-    transform: none !important;
     position: relative;
     z-index: 2;
     display: flex;
     flex-direction: column;
     gap: 6px;
     width: 100%;
+    transform: scale(1) translate(0, 0);
+    transform-origin: top left;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .deal-card-left-figma:hover .deal-text-frame-14405,
+  .deal-card-left-figma.is-active .deal-text-frame-14405,
+  .deal-card-left-figma:active .deal-text-frame-14405,
+  .deal-card-cabinet-figma:hover .deal-text-frame-cabinet,
+  .deal-card-cabinet-figma.is-active .deal-text-frame-cabinet,
+  .deal-card-cabinet-figma:active .deal-text-frame-cabinet {
+    transform: scale(0.82) translateY(-6px);
   }
 
   .deal-text-frame-14404 {
@@ -4127,6 +4207,20 @@ input, select {
     background: linear-gradient(90deg, #FC8E0E 0%, #D71A4F 100%);
     border-radius: 2px;
     margin: 2px 0;
+    opacity: 1;
+    transform: scaleX(1);
+    transform-origin: center;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  }
+
+  .deal-card-left-figma:hover .deal-gradient-line-14406,
+  .deal-card-left-figma.is-active .deal-gradient-line-14406,
+  .deal-card-left-figma:active .deal-gradient-line-14406,
+  .deal-card-cabinet-figma:hover .deal-gradient-line-cabinet,
+  .deal-card-cabinet-figma.is-active .deal-gradient-line-cabinet,
+  .deal-card-cabinet-figma:active .deal-gradient-line-cabinet {
+    transform: scaleX(0);
+    opacity: 0;
   }
 
   .deal-text-monitors,
@@ -4141,6 +4235,17 @@ input, select {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 0;
+    transform: translateY(0);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .deal-card-left-figma:hover .deal-text-monitors,
+  .deal-card-left-figma.is-active .deal-text-monitors,
+  .deal-card-left-figma:active .deal-text-monitors,
+  .deal-card-cabinet-figma:hover .deal-text-cabinet,
+  .deal-card-cabinet-figma.is-active .deal-text-cabinet,
+  .deal-card-cabinet-figma:active .deal-text-cabinet {
+    transform: translateY(-8px);
   }
 
   .deal-hover-perks-popup,
@@ -4167,11 +4272,13 @@ input, select {
     z-index: 10;
   }
 
-  /* Hovering cursor over the image card triggers the slide-up animation */
+  /* Hovering cursor or tapping/active on image card triggers the slide-up animation */
   .deal-card-left-figma:hover .deal-hover-perks-popup,
   .deal-card-cabinet-figma:hover .deal-hover-perks-cabinet,
   .deal-card-left-figma.is-active .deal-hover-perks-popup,
-  .deal-card-cabinet-figma.is-active .deal-hover-perks-cabinet {
+  .deal-card-cabinet-figma.is-active .deal-hover-perks-cabinet,
+  .deal-card-left-figma:active .deal-hover-perks-popup,
+  .deal-card-cabinet-figma:active .deal-hover-perks-cabinet {
     opacity: 1 !important;
     pointer-events: auto !important;
     transform: translateY(0) !important;
@@ -4210,6 +4317,14 @@ input, select {
     gap: 8px;
     text-align: center;
     box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+
+  .deal-perk-card-figma:hover,
+  .deal-perk-card-figma:active {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(255, 174, 51, 0.45);
   }
 
   .deal-perk-icon-wrap {
@@ -4251,6 +4366,23 @@ input, select {
     gap: 6px;
     border: none;
     cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .deal-checkout-btn-figma:hover,
+  .deal-checkout-btn-figma:active {
+    background-color: #1E293B;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.35);
+  }
+
+  .deal-checkout-btn-figma svg {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .deal-checkout-btn-figma:hover svg,
+  .deal-checkout-btn-figma:active svg {
+    transform: rotate(-135deg);
   }
 
   .deal-banner-bottom-figma {
@@ -4324,6 +4456,25 @@ input, select {
     gap: 6px;
     border: none;
     cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .deal-view-all-btn:hover,
+  .deal-view-all-btn:active {
+    background-color: #1E293B;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.35);
+  }
+
+  .deal-view-all-btn svg {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: center;
+  }
+
+  .deal-view-all-btn:hover svg,
+  .deal-view-all-btn:active svg,
+  .deal-view-all-btn:focus-visible svg {
+    transform: rotate(-135deg);
   }
 
   /* 6. Customer Reviews Mobile */
@@ -4353,11 +4504,37 @@ input, select {
     flex: 0 0 270px;
     width: 270px;
     padding: 14px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .customer-review-card-figma:hover,
+  .customer-review-card-figma:active {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   }
 
   .reviews-view-all-btn {
     height: 40px;
     font-size: 13px;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .reviews-view-all-btn:hover,
+  .reviews-view-all-btn:active {
+    background: #1E293B;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.35);
+  }
+
+  .reviews-view-all-btn svg {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: center;
+  }
+
+  .reviews-view-all-btn:hover svg,
+  .reviews-view-all-btn:active svg,
+  .reviews-view-all-btn:focus-visible svg {
+    transform: rotate(-135deg);
   }
 
   /* 7. Footer Mobile */
