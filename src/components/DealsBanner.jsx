@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowDown } from 'lucide-react';
 
 export default function DealsBanner({ onSelectCategory, onViewAllDeals }) {
+  const [activeDealCard, setActiveDealCard] = useState(null); // 'monitors' | 'cabinet' | null
+
+  const handleCardClick = (cardName) => {
+    setActiveDealCard((prev) => (prev === cardName ? null : cardName));
+  };
+
   return (
     <section className="deals-section-14426" id="deals">
       <div className="deals-frame-14426">
@@ -12,8 +18,8 @@ export default function DealsBanner({ onSelectCategory, onViewAllDeals }) {
         <div className="deals-row-container">
           {/* Left Card: 842px Fill, 539px Fixed, Radius: TL 12px, BL 12px */}
           <div
-            className="deal-card-left-figma"
-            onClick={() => onSelectCategory('monitor')}
+            className={`deal-card-left-figma ${activeDealCard === 'monitors' ? 'is-active' : ''}`}
+            onClick={() => handleCardClick('monitors')}
             role="button"
             tabIndex={0}
           >
@@ -95,7 +101,10 @@ export default function DealsBanner({ onSelectCategory, onViewAllDeals }) {
               {/* Checkout Button */}
               <button
                 className="deal-checkout-btn-figma"
-                onClick={() => onSelectCategory('monitor')}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSelectCategory('monitor');
+                }}
               >
                 <span>Checkout</span>
                 <ArrowDown size={15} />
@@ -107,8 +116,8 @@ export default function DealsBanner({ onSelectCategory, onViewAllDeals }) {
           <div className="deals-col-right-figma">
             {/* Top Card: 580px Fill, 343px Fixed, Radius: TR 12px, Border 0.7px */}
             <div
-              className="deal-card-cabinet-figma"
-              onClick={() => onSelectCategory('case')}
+              className={`deal-card-cabinet-figma ${activeDealCard === 'cabinet' ? 'is-active' : ''}`}
+              onClick={() => handleCardClick('cabinet')}
               role="button"
               tabIndex={0}
             >
@@ -184,7 +193,10 @@ export default function DealsBanner({ onSelectCategory, onViewAllDeals }) {
                 {/* Checkout Button */}
                 <button
                   className="deal-checkout-btn-figma"
-                  onClick={() => onSelectCategory('case')}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onSelectCategory('case');
+                  }}
                 >
                   <span>Checkout</span>
                   <ArrowDown size={14} />
