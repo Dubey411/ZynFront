@@ -4149,7 +4149,7 @@ input, select {
     overflow: hidden;
   }
 
-  /* Mobile: text frame is pre-scaled by default to make room for always-visible perks popup */
+  /* Mobile default: text frame at normal scale — scales down only on hover/tap */
   .deal-text-frame-14405,
   .deal-text-frame-cabinet {
     position: relative;
@@ -4158,9 +4158,18 @@ input, select {
     flex-direction: column;
     gap: 6px;
     width: 100%;
-    transform: scale(0.82) translateY(-6px);
+    transform: scale(1) translate(0, 0);
     transform-origin: top left;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .deal-card-left-figma:hover .deal-text-frame-14405,
+  .deal-card-left-figma.is-active .deal-text-frame-14405,
+  .deal-card-left-figma:active .deal-text-frame-14405,
+  .deal-card-cabinet-figma:hover .deal-text-frame-cabinet,
+  .deal-card-cabinet-figma.is-active .deal-text-frame-cabinet,
+  .deal-card-cabinet-figma:active .deal-text-frame-cabinet {
+    transform: scale(0.82) translateY(-6px);
   }
 
   .deal-text-frame-14404 {
@@ -4191,7 +4200,7 @@ input, select {
     text-transform: uppercase;
   }
 
-  /* Mobile: gradient line collapsed by default (perks always visible) */
+  /* Mobile default: gradient line fully visible — collapses only on hover/tap */
   .deal-gradient-line-14406,
   .deal-gradient-line-cabinet {
     width: 100%;
@@ -4200,13 +4209,23 @@ input, select {
     background: linear-gradient(90deg, #FC8E0E 0%, #D71A4F 100%);
     border-radius: 2px;
     margin: 2px 0;
-    opacity: 0;
-    transform: scaleX(0);
+    opacity: 1;
+    transform: scaleX(1);
     transform-origin: center;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
   }
 
-  /* Mobile: MONITORS/CABINET text pre-shifted up (line is already gone by default) */
+  .deal-card-left-figma:hover .deal-gradient-line-14406,
+  .deal-card-left-figma.is-active .deal-gradient-line-14406,
+  .deal-card-left-figma:active .deal-gradient-line-14406,
+  .deal-card-cabinet-figma:hover .deal-gradient-line-cabinet,
+  .deal-card-cabinet-figma.is-active .deal-gradient-line-cabinet,
+  .deal-card-cabinet-figma:active .deal-gradient-line-cabinet {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+
+  /* Mobile default: MONITORS/CABINET text at rest — shifts up only on hover/tap */
   .deal-text-monitors,
   .deal-text-cabinet {
     font-family: 'Bai Jamjuree', sans-serif;
@@ -4219,11 +4238,20 @@ input, select {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 0;
-    transform: translateY(-8px);
+    transform: translateY(0);
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* Mobile: perks popup ALWAYS visible by default (no hover on touch) */
+  .deal-card-left-figma:hover .deal-text-monitors,
+  .deal-card-left-figma.is-active .deal-text-monitors,
+  .deal-card-left-figma:active .deal-text-monitors,
+  .deal-card-cabinet-figma:hover .deal-text-cabinet,
+  .deal-card-cabinet-figma.is-active .deal-text-cabinet,
+  .deal-card-cabinet-figma:active .deal-text-cabinet {
+    transform: translateY(-8px);
+  }
+
+  /* Mobile popup: hidden by default, slides up on hover/tap (same as desktop animation) */
   .deal-hover-perks-popup,
   .deal-hover-perks-cabinet {
     position: absolute;
@@ -4242,11 +4270,23 @@ input, select {
     flex-direction: column;
     align-items: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(125%);
+    transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    z-index: 10;
+  }
+
+  /* Tap / hold / hover triggers the slide-up animation */
+  .deal-card-left-figma:hover .deal-hover-perks-popup,
+  .deal-card-cabinet-figma:hover .deal-hover-perks-cabinet,
+  .deal-card-left-figma.is-active .deal-hover-perks-popup,
+  .deal-card-cabinet-figma.is-active .deal-hover-perks-cabinet,
+  .deal-card-left-figma:active .deal-hover-perks-popup,
+  .deal-card-cabinet-figma:active .deal-hover-perks-cabinet {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
-    transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-    z-index: 10;
   }
 
   .deal-perks-grid-figma {
