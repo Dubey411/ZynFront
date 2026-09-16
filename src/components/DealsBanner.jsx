@@ -1,12 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ArrowDown } from 'lucide-react';
 
 export default function DealsBanner({ onSelectCategory, onViewAllDeals }) {
   const [activeDealCard, setActiveDealCard] = useState(null); // 'monitors' | 'cabinet' | null
+  const monitorCardRef = useRef(null);
+  const cabinetCardRef = useRef(null);
 
   const handleCardClick = (cardName) => {
     setActiveDealCard((prev) => (prev === cardName ? null : cardName));
   };
+
+  const handleMouseEnter = (cardName) => {
+    setActiveDealCard(cardName);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveDealCard(null);
+  };
+
+  // Dismiss popup when clicking/tapping outside the cards
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      const clickedOutside =
+        monitorCardRef.current && !monitorCardRef.current.contains(e.target) &&
+        cabinetCardRef.current && !cabinetCardRef.current.contains(e.target);
+      if (clickedOutside) {
+        setActiveDealCard(null);
+      }
+    };
+    document.addEventListener('mousedown', handleOutsideClick);
+    document.addEventListener('touchstart', handleOutsideClick);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('touchstart', handleOutsideClick);
+    };
+  }, []);
 
   return (
     <section className="deals-section-14426" id="deals">
@@ -18,8 +46,11 @@ export default function DealsBanner({ onSelectCategory, onViewAllDeals }) {
         <div className="deals-row-container">
           {/* Left Card: 842px Fill, 539px Fixed, Radius: TL 12px, BL 12px */}
           <div
+            ref={monitorCardRef}
             className={`deal-card-left-figma ${activeDealCard === 'monitors' ? 'is-active' : ''}`}
             onClick={() => handleCardClick('monitors')}
+            onMouseEnter={() => handleMouseEnter('monitors')}
+            onMouseLeave={handleMouseLeave}
             role="button"
             tabIndex={0}
           >
@@ -116,8 +147,11 @@ export default function DealsBanner({ onSelectCategory, onViewAllDeals }) {
           <div className="deals-col-right-figma">
             {/* Top Card: 580px Fill, 343px Fixed, Radius: TR 12px, Border 0.7px */}
             <div
+              ref={cabinetCardRef}
               className={`deal-card-cabinet-figma ${activeDealCard === 'cabinet' ? 'is-active' : ''}`}
               onClick={() => handleCardClick('cabinet')}
+              onMouseEnter={() => handleMouseEnter('cabinet')}
+              onMouseLeave={handleMouseLeave}
               role="button"
               tabIndex={0}
             >
