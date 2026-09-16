@@ -4138,8 +4138,8 @@ input, select {
   .deal-card-cabinet-figma {
     position: relative;
     width: 100%;
-    height: 490px;
-    min-height: 490px;
+    height: 560px;
+    min-height: 560px;
     border-radius: 16px;
     padding: 24px 20px;
     box-sizing: border-box;
@@ -4149,6 +4149,7 @@ input, select {
     overflow: hidden;
   }
 
+  /* Mobile: text frame is pre-scaled by default to make room for always-visible perks popup */
   .deal-text-frame-14405,
   .deal-text-frame-cabinet {
     position: relative;
@@ -4157,18 +4158,9 @@ input, select {
     flex-direction: column;
     gap: 6px;
     width: 100%;
-    transform: scale(1) translate(0, 0);
+    transform: scale(0.82) translateY(-6px);
     transform-origin: top left;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .deal-card-left-figma:hover .deal-text-frame-14405,
-  .deal-card-left-figma.is-active .deal-text-frame-14405,
-  .deal-card-left-figma:active .deal-text-frame-14405,
-  .deal-card-cabinet-figma:hover .deal-text-frame-cabinet,
-  .deal-card-cabinet-figma.is-active .deal-text-frame-cabinet,
-  .deal-card-cabinet-figma:active .deal-text-frame-cabinet {
-    transform: scale(0.82) translateY(-6px);
   }
 
   .deal-text-frame-14404 {
@@ -4199,6 +4191,7 @@ input, select {
     text-transform: uppercase;
   }
 
+  /* Mobile: gradient line collapsed by default (perks always visible) */
   .deal-gradient-line-14406,
   .deal-gradient-line-cabinet {
     width: 100%;
@@ -4207,22 +4200,13 @@ input, select {
     background: linear-gradient(90deg, #FC8E0E 0%, #D71A4F 100%);
     border-radius: 2px;
     margin: 2px 0;
-    opacity: 1;
-    transform: scaleX(1);
+    opacity: 0;
+    transform: scaleX(0);
     transform-origin: center;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
   }
 
-  .deal-card-left-figma:hover .deal-gradient-line-14406,
-  .deal-card-left-figma.is-active .deal-gradient-line-14406,
-  .deal-card-left-figma:active .deal-gradient-line-14406,
-  .deal-card-cabinet-figma:hover .deal-gradient-line-cabinet,
-  .deal-card-cabinet-figma.is-active .deal-gradient-line-cabinet,
-  .deal-card-cabinet-figma:active .deal-gradient-line-cabinet {
-    transform: scaleX(0);
-    opacity: 0;
-  }
-
+  /* Mobile: MONITORS/CABINET text pre-shifted up (line is already gone by default) */
   .deal-text-monitors,
   .deal-text-cabinet {
     font-family: 'Bai Jamjuree', sans-serif;
@@ -4235,19 +4219,11 @@ input, select {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 0;
-    transform: translateY(0);
+    transform: translateY(-8px);
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .deal-card-left-figma:hover .deal-text-monitors,
-  .deal-card-left-figma.is-active .deal-text-monitors,
-  .deal-card-left-figma:active .deal-text-monitors,
-  .deal-card-cabinet-figma:hover .deal-text-cabinet,
-  .deal-card-cabinet-figma.is-active .deal-text-cabinet,
-  .deal-card-cabinet-figma:active .deal-text-cabinet {
-    transform: translateY(-8px);
-  }
-
+  /* Mobile: perks popup ALWAYS visible by default (no hover on touch) */
   .deal-hover-perks-popup,
   .deal-hover-perks-cabinet {
     position: absolute;
@@ -4260,62 +4236,40 @@ input, select {
     background: #FFFFFF;
     border-radius: 16px;
     padding: 14px 12px;
+    gap: 12px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(125%);
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
     transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     z-index: 10;
   }
 
-  /* Hovering cursor or tapping/active on image card triggers the slide-up animation */
-  .deal-card-left-figma:hover .deal-hover-perks-popup,
-  .deal-card-cabinet-figma:hover .deal-hover-perks-cabinet,
-  .deal-card-left-figma.is-active .deal-hover-perks-popup,
-  .deal-card-cabinet-figma.is-active .deal-hover-perks-cabinet,
-  .deal-card-left-figma:active .deal-hover-perks-popup,
-  .deal-card-cabinet-figma:active .deal-hover-perks-cabinet {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    transform: translateY(0) !important;
-  }
-
   .deal-perks-grid-figma {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
     width: 100%;
     height: auto;
-    overflow-x: auto;
-    padding: 2px 2px 6px 2px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
     box-sizing: border-box;
   }
 
-  .deal-perks-grid-figma::-webkit-scrollbar {
-    display: none;
-  }
-
   .deal-perk-card-figma {
-    flex: 0 0 calc(50% - 4px);
-    min-width: 110px;
-    max-width: 150px;
-    height: 104px;
+    width: 100%;
+    height: 80px;
     background: #FFAE33;
-    border-radius: 12px;
-    padding: 10px 6px;
+    border-radius: 10px;
+    padding: 8px 6px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 8px;
-    text-align: center;
+    text-align: left;
     box-sizing: border-box;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
@@ -4323,7 +4277,7 @@ input, select {
 
   .deal-perk-card-figma:hover,
   .deal-perk-card-figma:active {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(255, 174, 51, 0.45);
   }
 
@@ -4331,21 +4285,23 @@ input, select {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 32px;
+    height: 36px;
+    width: 36px;
+    flex-shrink: 0;
   }
 
   .deal-perk-icon-wrap svg {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
   }
 
   .deal-perk-label {
     font-family: var(--font-primary);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     color: #FFFFFF;
     line-height: 1.25;
-    text-align: center;
+    text-align: left;
     white-space: normal;
   }
 
