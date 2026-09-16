@@ -24,11 +24,10 @@ export default function Hero({ onShopNow, onExploreDeals }) {
           <div className="hero-centered-content">
             <div className="hero-text-block">
               <h1 className="hero-title-figma">
-                <span className="hero-title-desktop-prefix">Powerful PC Parts. </span>
-                <span className="hero-title-main">
-                  <span className="hero-title-word">Smarter</span>{' '}
-                  <span className="hero-title-word">Prices.</span>
-                </span>
+                <span className="hero-line hero-line-1">Powerful</span>{' '}
+                <span className="hero-line hero-line-2">PC Parts.</span>{' '}
+                <span className="hero-line hero-line-3">Smarter</span>{' '}
+                <span className="hero-line hero-line-4">Prices.</span>
               </h1>
               <p className="hero-subtext-figma">
                 Certified refurbished components tested for performance and reliability
