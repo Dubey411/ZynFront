@@ -1829,6 +1829,7 @@ input, select {
 }
 
 .deal-card-left-figma:hover .deal-hover-perks-popup,
+.deal-card-left-figma.is-active .deal-hover-perks-popup,
 .deal-card-left-figma:focus-within .deal-hover-perks-popup {
   opacity: 1;
   transform: translate(-50%, 0);
@@ -1959,6 +1960,7 @@ input, select {
 }
 
 .deal-card-cabinet-figma:hover .deal-hover-perks-popup,
+.deal-card-cabinet-figma.is-active .deal-hover-perks-popup,
 .deal-card-cabinet-figma:focus-within .deal-hover-perks-popup {
   opacity: 1;
   transform: translate(-50%, 0);
@@ -4157,12 +4159,19 @@ input, select {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(125%);
+    transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    z-index: 10;
+  }
+
+  .deal-card-left-figma.is-active .deal-hover-perks-popup,
+  .deal-card-cabinet-figma.is-active .deal-hover-perks-cabinet {
     opacity: 1 !important;
     pointer-events: auto !important;
-    transform: none !important;
-    z-index: 10;
+    transform: translateY(0) !important;
   }
 
   .deal-perks-grid-figma {
