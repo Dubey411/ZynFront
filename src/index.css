@@ -4160,31 +4160,18 @@ input, select {
     flex-direction: column;
     align-items: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    opacity: 0 !important;
-    pointer-events: none !important;
-    transform: translateY(125%) !important;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(125%);
     transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     z-index: 10;
   }
 
-  /* Disable hover trigger on mobile / touch viewports completely */
+  /* Hovering cursor over the image card triggers the slide-up animation */
   .deal-card-left-figma:hover .deal-hover-perks-popup,
-  .deal-card-cabinet-figma:hover .deal-hover-perks-popup,
   .deal-card-cabinet-figma:hover .deal-hover-perks-cabinet,
-  .deal-card-left-figma:focus-within .deal-hover-perks-popup,
-  .deal-card-cabinet-figma:focus-within .deal-hover-perks-popup,
-  .deal-card-cabinet-figma:focus-within .deal-hover-perks-cabinet {
-    opacity: 0 !important;
-    pointer-events: none !important;
-    transform: translateY(125%) !important;
-  }
-
-  /* ONLY on click (when .is-active is toggled) does it animate up into view! */
   .deal-card-left-figma.is-active .deal-hover-perks-popup,
-  .deal-card-cabinet-figma.is-active .deal-hover-perks-cabinet,
-  .deal-card-cabinet-figma.is-active .deal-hover-perks-popup,
-  .deal-card-left-figma.is-active:hover .deal-hover-perks-popup,
-  .deal-card-cabinet-figma.is-active:hover .deal-hover-perks-cabinet {
+  .deal-card-cabinet-figma.is-active .deal-hover-perks-cabinet {
     opacity: 1 !important;
     pointer-events: auto !important;
     transform: translateY(0) !important;
