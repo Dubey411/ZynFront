@@ -44,6 +44,13 @@ export default function App() {
   const [selectedComponents, setSelectedComponents] = useState([]);
   const [sortOption, setSortOption] = useState('relevance');
   const [visibleCount, setVisibleCount] = useState(10); // Show 10 initially as in Page 3 (2 rows of 5)
+  const [mobileCatalogTab, setMobileCatalogTab] = useState('categories');
+
+  const activeFilterCount =
+    (selectedCondition ? 1 : 0) +
+    (selectedPriceRange ? 1 : 0) +
+    selectedComponents.length +
+    (sortOption !== 'relevance' ? 1 : 0);
 
   // Sync cart & wishlist to localStorage
   useEffect(() => {
@@ -245,9 +252,30 @@ export default function App() {
       {/* 3. Catalog: Filter Sidebar + Categories Bar + Product Grid */}
       <section className="catalog-section" id="catalog">
         <div className="container">
+          {/* Mobile Catalog Header Tabs matching Figma Mobile */}
+          <div className="mobile-catalog-tabs">
+            <button
+              type="button"
+              className={`mobile-catalog-tab-btn ${mobileCatalogTab === 'filter' ? 'active' : ''}`}
+              onClick={() => setMobileCatalogTab('filter')}
+            >
+              Filter
+              {activeFilterCount > 0 && (
+                <span className="mobile-tab-count">{activeFilterCount}</span>
+              )}
+            </button>
+            <button
+              type="button"
+              className={`mobile-catalog-tab-btn ${mobileCatalogTab === 'categories' ? 'active' : ''}`}
+              onClick={() => setMobileCatalogTab('categories')}
+            >
+              Categories
+            </button>
+          </div>
+
           <div className="catalog-master-layout">
             {/* Left Sidebar: Filter Accordion (Page 3 & 15-19) */}
-            <div className="catalog-left-sidebar">
+            <div className={`catalog-left-sidebar ${mobileCatalogTab === 'filter' ? 'mobile-visible' : 'mobile-hidden'}`}>
               <FilterSidebar
                 selectedCondition={selectedCondition}
                 onConditionChange={setSelectedCondition}
@@ -257,18 +285,20 @@ export default function App() {
                 onComponentToggle={handleComponentToggle}
                 sortOption={sortOption}
                 onSortChange={setSortOption}
-                onApplyFilters={() => {}}
+                onApplyFilters={() => setMobileCatalogTab('categories')}
                 onResetFilters={handleResetFilters}
               />
             </div>
 
             {/* Right Main Area: Categories Bar + Best Seller Grid */}
-            <div className="catalog-main-area">
+            <div className={`catalog-main-area ${mobileCatalogTab === 'categories' ? 'mobile-visible' : 'mobile-hidden'}`}>
               {/* Category Grid */}
-              <CategoryGrid
-                selectedCategory={selectedCategory}
-                onSelectCategory={setSelectedCategory}
-              />
+              <div className="catalog-categories-wrap">
+                <CategoryGrid
+                  selectedCategory={selectedCategory}
+                  onSelectCategory={setSelectedCategory}
+                />
+              </div>
 
               {/* Best Seller Section (Frame 14435: 1152px Fill, Hug 806px, Gap 32px) */}
               <div className="best-seller-container">
