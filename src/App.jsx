@@ -11,6 +11,7 @@ import Reviews from './components/Reviews';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
 import ProductDetailModal from './components/ProductDetailModal';
+import ChatWidget from './components/ChatWidget';
 import { PRODUCTS, PRICE_RANGES } from './data/mockData';
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
 
@@ -43,8 +44,56 @@ export default function App() {
   const [selectedPriceRange, setSelectedPriceRange] = useState('');
   const [selectedComponents, setSelectedComponents] = useState([]);
   const [sortOption, setSortOption] = useState('relevance');
-  const [visibleCount, setVisibleCount] = useState(10); // Show 10 initially as in Page 3 (2 rows of 5)
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 1024);
+  const [isCatalogExpanded, setIsCatalogExpanded] = useState(false);
   const [mobileCatalogTab, setMobileCatalogTab] = useState('categories');
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Global touch listener so touching/hovering cards & buttons immediately activates animation without clicking
+  useEffect(() => {
+    document.addEventListener('touchstart', () => {}, { passive: true });
+
+    let activeTouchEl = null;
+
+    const handleTouchStart = (e) => {
+      const interactiveEl = e.target.closest(
+        '.btn-hero-trans, .btn-hero-white, .btn-view-all-dark, .footer-subscribe-btn-14365, .deal-checkout-btn-figma, .deal-card-left-figma, .deal-card-cabinet-figma, .product-card, .btn-category-tab, .category-card, .floating-chat-bubble-figma, button, .btn'
+      );
+      if (interactiveEl) {
+        if (activeTouchEl && activeTouchEl !== interactiveEl) {
+          activeTouchEl.classList.remove('is-touch-hover');
+        }
+        activeTouchEl = interactiveEl;
+        interactiveEl.classList.add('is-touch-hover');
+      }
+    };
+
+    const handleTouchEnd = () => {
+      if (activeTouchEl) {
+        const el = activeTouchEl;
+        setTimeout(() => {
+          el.classList.remove('is-touch-hover');
+        }, 500);
+      }
+    };
+
+    document.addEventListener('touchstart', handleTouchStart, { passive: true });
+    document.addEventListener('touchend', handleTouchEnd, { passive: true });
+    document.addEventListener('touchcancel', handleTouchEnd, { passive: true });
+
+    return () => {
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchend', handleTouchEnd);
+      document.removeEventListener('touchcancel', handleTouchEnd);
+    };
+  }, []);
 
   const activeFilterCount =
     (selectedCondition ? 1 : 0) +
@@ -306,7 +355,10 @@ export default function App() {
 
                 <div className="best-seller-products-grid">
                   {filteredProducts.length > 0 ? (
-                    filteredProducts.slice(0, visibleCount).map((product) => (
+                    (isCatalogExpanded
+                      ? filteredProducts
+                      : filteredProducts.slice(0, isMobile ? 4 : 10)
+                    ).map((product) => (
                       <ProductCard
                         key={product.id}
                         product={product}
@@ -327,19 +379,13 @@ export default function App() {
                   )}
                 </div>
 
-                {filteredProducts.length > 10 && (
+                {filteredProducts.length > (isMobile ? 4 : 10) && (
                   <div className="view-all-center-row">
                     <button
                       className="btn-view-all-dark"
-                      onClick={() => {
-                        if (visibleCount > 10) {
-                          setVisibleCount(10);
-                        } else {
-                          setVisibleCount(filteredProducts.length);
-                        }
-                      }}
+                      onClick={() => setIsCatalogExpanded(!isCatalogExpanded)}
                     >
-                      <span>View All</span>
+                      <span>{isCatalogExpanded ? 'View Less' : 'View All'}</span>
                       <span className="view-all-arrow-box">
                         <ArrowDown className="arrow-down-icon" size={16} />
                         <ArrowUpRight className="arrow-up-right-icon" size={16} />
@@ -393,6 +439,9 @@ export default function App() {
         onClose={() => setQuickViewProduct(null)}
         onAddToCart={handleAddToCart}
       />
+
+      {/* Floating Support Chat Widget (Figma Frame 14463) */}
+      <ChatWidget />
     </div>
   );
 }

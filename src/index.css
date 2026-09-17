@@ -440,6 +440,7 @@ input, select {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: left center;
   z-index: 1;
 }
 
@@ -569,108 +570,26 @@ input, select {
 
 .btn-hero-trans:hover::before,
 .btn-hero-trans:active::before,
-.btn-hero-trans:focus-visible::before {
+.btn-hero-trans:focus-visible::before,
+.btn-hero-trans.is-touch-hover::before {
   transform: translateX(-50%) scale(1.6);
 }
 
 .btn-hero-trans:hover,
 .btn-hero-trans:active,
-.btn-hero-trans:focus-visible {
+.btn-hero-trans:focus-visible,
+.btn-hero-trans.is-touch-hover {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
   transform: translateY(-2px);
 }
 
 .btn-hero-trans:hover .btn-text,
 .btn-hero-trans:active .btn-text,
-.btn-hero-trans:focus-visible .btn-text {
+.btn-hero-trans:focus-visible .btn-text,
+.btn-hero-trans.is-touch-hover .btn-text {
   color: #0F172A;
 }
 
-/* Floating Live Chat Widget (Matching Figma Page 24 & screenshot) */
-.hero-chat-container {
-  position: absolute;
-  right: 30px;
-  bottom: 96px;
-  z-index: 10;
-}
-
-.hero-floating-chat-white {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background-color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-  transition: transform 0.2s ease;
-  border: 1px solid #E2E8F0;
-  cursor: pointer;
-}
-
-.hero-floating-chat-white:hover {
-  transform: scale(1.08);
-}
-
-.hero-chat-card {
-  position: absolute;
-  bottom: 60px;
-  right: 0;
-  width: 280px;
-  background-color: #FFFFFF;
-  border-radius: 16px;
-  padding: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  border: 1px solid var(--color-border);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  animation: modalScale 0.2s ease-out;
-}
-
-.chat-card-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.chat-heading {
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--color-text-primary);
-  flex: 1;
-}
-
-.chat-close-btn {
-  color: var(--color-text-muted);
-}
-
-.chat-options-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.chat-option-chip {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 12px;
-  background-color: #F8FAFC;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-full);
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--color-text-primary);
-  transition: all 0.15s ease;
-}
-
-.chat-option-chip:hover {
-  background-color: var(--color-bg-elevated);
-  border-color: var(--color-accent);
-}
 
 /* Bottom Yellow Ticker Strip (Figma Frame 14431) */
 .hero-bottom-yellow-strip {
@@ -1317,10 +1236,11 @@ input, select {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-/* View All Row and Pill Button (Figma Frame 14435) */
+/* View All Row and Pill Button (Figma Frame 14379 & Frame 14378) */
 .view-all-center-row {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
   margin-top: 8px;
 }
@@ -1330,20 +1250,26 @@ input, select {
   align-items: center;
   justify-content: center;
   gap: 8px;
+  width: 146px;
+  height: 45px;
   background-color: #0F172A;
   color: #FFFFFF;
-  font-family: var(--font-primary);
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  font-size: 13px;
-  padding: 8px 24px;
-  border-radius: 9999px;
+  font-size: 14px;
+  line-height: 1;
+  padding: 12px 24px;
+  border-radius: 12px;
   border: none;
   cursor: pointer;
+  box-sizing: border-box;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
 }
 
-.btn-view-all-dark:hover {
+.btn-view-all-dark:hover,
+.btn-view-all-dark:active,
+.btn-view-all-dark.is-touch-hover {
   background-color: #1E293B;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
@@ -1372,12 +1298,16 @@ input, select {
   transform: translate(-3px, 3px);
 }
 
-.btn-view-all-dark:hover .arrow-down-icon {
+.btn-view-all-dark:hover .arrow-down-icon,
+.btn-view-all-dark:active .arrow-down-icon,
+.btn-view-all-dark.is-touch-hover .arrow-down-icon {
   opacity: 0;
   transform: translate(2px, -3px);
 }
 
-.btn-view-all-dark:hover .arrow-up-right-icon {
+.btn-view-all-dark:hover .arrow-up-right-icon,
+.btn-view-all-dark:active .arrow-up-right-icon,
+.btn-view-all-dark.is-touch-hover .arrow-up-right-icon {
   opacity: 1;
   transform: translate(0, 0);
 }
@@ -1918,13 +1848,17 @@ input, select {
   transform-origin: center;
 }
 
-.deal-checkout-btn-figma:hover {
+.deal-checkout-btn-figma:hover,
+.deal-checkout-btn-figma:active,
+.deal-checkout-btn-figma.is-touch-hover {
   background: #1E293B;
   transform: translateY(-1px);
 }
 
 .deal-checkout-btn-figma:hover svg,
-.deal-checkout-btn-figma:focus-visible svg {
+.deal-checkout-btn-figma:active svg,
+.deal-checkout-btn-figma:focus-visible svg,
+.deal-checkout-btn-figma.is-touch-hover svg {
   transform: rotate(-135deg);
 }
 
@@ -2627,20 +2561,23 @@ input, select {
 
 .footer-subscribe-btn-14365:hover::before,
 .footer-subscribe-btn-14365:active::before,
-.footer-subscribe-btn-14365:focus-visible::before {
+.footer-subscribe-btn-14365:focus-visible::before,
+.footer-subscribe-btn-14365.is-touch-hover::before {
   transform: translateX(-50%) scale(1.6);
 }
 
 .footer-subscribe-btn-14365:hover,
 .footer-subscribe-btn-14365:active,
-.footer-subscribe-btn-14365:focus-visible {
+.footer-subscribe-btn-14365:focus-visible,
+.footer-subscribe-btn-14365.is-touch-hover {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
   transform: translateY(-2px);
 }
 
 .footer-subscribe-btn-14365:hover span,
 .footer-subscribe-btn-14365:active span,
-.footer-subscribe-btn-14365:focus-visible span {
+.footer-subscribe-btn-14365:focus-visible span,
+.footer-subscribe-btn-14365.is-touch-hover span {
   color: #0F172A;
 }
 
@@ -3469,20 +3406,26 @@ input, select {
     padding: 0 16px;
   }
 
-  /* 1. Hero Banner Mobile matching Figma Mobile Reference */
+  /* 1. Hero Banner Mobile matching Figma Mobile Reference (Fixed 811px, Radius 12px) */
   .hero-container-wrapper {
-    padding: 0 16px;
+    padding: 0 10px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .hero-banner-container {
-    height: auto;
-    min-height: 660px;
-    padding: 24px 14px 16px 14px;
+    width: 100%;
+    max-width: 400px;
+    height: 811px;
+    min-height: 811px;
+    margin: 0 auto;
+    padding: 0 0 12px 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    border-radius: 18px;
+    border-radius: 12px;
+    border: 1px solid #E2E8F0;
     overflow: hidden;
     position: relative;
     box-sizing: border-box;
@@ -3494,8 +3437,8 @@ input, select {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 25%;
-    border-radius: 18px;
+    object-position: left center;
+    border-radius: 12px;
     z-index: 0;
   }
 
@@ -3504,35 +3447,42 @@ input, select {
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.5) 45%, rgba(0, 0, 0, 0.2) 100%);
-    border-radius: 18px;
+    border-radius: 12px;
     z-index: 1;
     pointer-events: none;
   }
 
+  /* Frame 14432: Flow Vertical, Width Fill (380px), Height Hug (616px), Gap 32px */
   .hero-centered-content {
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 100%;
+    max-width: 380px;
     height: auto;
     min-height: unset;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 6px 0 0 0;
+    padding: 0;
     margin: 0;
-    gap: 16px;
+    gap: 32px;
+    box-sizing: border-box;
   }
 
+  /* Frame 14428: Flow Vertical, Width Fill (380px), Height Hug (482px), Padding Top 30px, Gap 8px */
   .hero-text-block {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 14px;
     width: 100%;
+    max-width: 380px;
+    padding-top: 30px;
+    gap: 8px;
+    box-sizing: border-box;
   }
 
+  /* Title: Poppins 700 Bold, 64px, Line Height 100% (1), Center, #FFFFFF */
   .hero-title-figma {
     display: flex;
     flex-direction: column;
@@ -3541,31 +3491,37 @@ input, select {
     gap: 0;
     margin: 0;
     padding: 0;
+    width: 100%;
+    max-width: 380px;
     text-align: center;
   }
 
   .hero-title-figma .hero-line {
     display: block;
-    font-family: var(--font-primary);
-    font-size: 48px;
-    font-weight: 800;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(38px, 13vw, 64px);
+    font-weight: 700;
     color: #FFFFFF;
-    line-height: 1.05;
-    letter-spacing: -0.5px;
+    line-height: 1;
+    letter-spacing: 0;
     text-align: center;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   }
 
+  /* Subtitle: H4 Poppins 500 Medium, 20px, Line Height 100%, Center, #FFFFFF */
   .hero-subtext-figma {
-    font-family: var(--font-primary);
-    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(15px, 4.5vw, 20px);
     font-weight: 500;
-    line-height: 1.35;
+    line-height: 1.25;
+    letter-spacing: 0;
     color: #FFFFFF;
     text-align: center;
-    max-width: 310px;
-    margin: 0 auto;
-    padding: 0 4px;
+    width: 100%;
+    max-width: 380px;
+    margin: 0;
+    padding: 0 8px;
+    box-sizing: border-box;
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
   }
 
@@ -3575,7 +3531,7 @@ input, select {
     align-items: center;
     gap: 12px;
     width: 100%;
-    margin-top: 6px;
+    margin-top: 0;
     height: auto;
   }
 
@@ -3636,62 +3592,77 @@ input, select {
   .hero-bottom-yellow-strip {
     position: relative;
     z-index: 2;
-    width: 100%;
-    max-width: 100%;
+    width: calc(100% - 20px);
+    max-width: 380px;
     height: auto;
-    padding: 16px 20px;
-    margin: 24px auto 0 auto;
+    padding: 14px 16px;
+    margin: 0 auto;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    border-radius: 14px;
+    gap: 6px;
+    border-radius: 12px;
     background-color: #FFE27A;
     box-sizing: border-box;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   }
 
   .hero-bottom-yellow-strip .strip-item {
-    font-family: var(--font-primary);
-    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
     font-weight: 600;
     color: #436B84;
     white-space: normal;
-    line-height: 1.35;
+    line-height: 1.3;
     text-align: center;
   }
 
-  .hero-chat-container {
-    display: none !important;
-  }
-
-  /* 2. Catalog Section Mobile (Filter + Categories + Best Sellers) */
+  /* 2. Catalog Section Mobile (Category + Product Container: Fill 400px, Gap 64px, Padding 10px) */
   .catalog-section {
     padding: 24px 0 40px;
+    width: 100%;
   }
 
-  /* Mobile Catalog Header Tabs matching Figma Mobile Screenshot */
+  .catalog-section .container {
+    padding: 0 10px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  /* Mobile Catalog Header Tabs matching Figma Mobile Screenshot (Small Card: Gap 24px) */
+  .catalog-categories-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    max-width: 380px;
+    box-sizing: border-box;
+  }
+
   .mobile-catalog-tabs {
     display: flex;
     align-items: center;
     gap: 28px;
-    margin-bottom: 24px;
-    padding: 0 4px;
+    margin-bottom: 0;
+    padding: 0 2px;
     border-bottom: none;
   }
 
   .mobile-catalog-tab-btn {
-    font-family: var(--font-primary);
+    font-family: 'Poppins', sans-serif;
     font-size: 24px;
     font-weight: 700;
     color: #000000;
     background: none;
     border: none;
-    padding: 0 0 6px 0;
+    padding: 0 0 4px 0;
     cursor: pointer;
     position: relative;
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    line-height: 1;
     transition: opacity 0.2s ease;
   }
 
@@ -3729,7 +3700,7 @@ input, select {
   .catalog-master-layout {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 0;
     width: 100%;
   }
 
@@ -3759,9 +3730,16 @@ input, select {
     box-sizing: border-box;
   }
 
+  /* Category + Product Container Gap: 64px */
   .catalog-main-area {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
     width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
     min-width: 0;
+    box-sizing: border-box;
   }
 
   .categories-block-card {
@@ -3855,37 +3833,100 @@ input, select {
     margin-top: 0;
   }
 
-  /* Best Seller Product Grid Mobile */
+  /* Frame 14435: Best Seller Product Container (Gap: 32px, Fill 380px) */
   .best-seller-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    align-items: flex-start;
-    gap: 20px;
+    max-width: 380px;
+    gap: 32px;
+    margin: 0 auto;
+    box-sizing: border-box;
   }
 
+  /* Text: H1 Poppins 600 SemiBold, 40px, Line height 100%, Center */
   .best-seller-title-figma {
-    font-size: 28px;
-    font-weight: 700;
-    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(28px, 8.5vw, 40px);
+    font-weight: 600;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: 0;
     min-height: auto;
     width: 100%;
+    max-width: 380px;
     color: #000000;
+    margin: 0;
+    padding: 0;
   }
 
+  /* Frame 14376: Flow Vertical, Width Fill (380px), Height Hug (714px), Gap 24px */
   .best-seller-products-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 12px;
     width: 100%;
+    max-width: 380px;
+    box-sizing: border-box;
   }
 
+  /* Frame 14379: Container of View All (Fill 380px, Hug 45px, Gap 8px) */
+  .view-all-center-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 380px;
+    height: 45px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  /* Frame 14378: View All Button (Fixed 146px, Hug 45px, Radius 12px, Padding 12px 24px, Gap 8px) */
+  .btn-view-all-dark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 146px;
+    height: 45px;
+    background-color: #0F172A;
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1;
+    padding: 12px 24px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+    transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  }
+
+  .btn-view-all-dark:hover,
+  .btn-view-all-dark:active {
+    background-color: #1E293B;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.35);
+  }
+
+  /* ❖ Product Card (Radius 12px, Padding 12px, Gap 8px, Hug 345px, #FFFFFF) */
   .product-card {
     width: 100%;
     min-width: 0;
     max-width: 100%;
-    min-height: auto;
-    padding: 10px 8px;
-    gap: 6px;
+    min-height: 330px;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: 12px;
+    gap: 8px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
   }
 
@@ -4096,32 +4137,48 @@ input, select {
     line-height: 1.4;
   }
 
-  /* 5. Deals Banner Mobile matching Figma Mobile Screenshots */
+  /* 5. Deals Banner Mobile matching Figma Mobile Screenshots (Frame 14426: Fill 400px, Hug 1,176px, Gap 32px) */
   .deals-section-14426 {
-    padding: 30px 0 40px;
+    padding: 24px 0 40px;
+    width: 100%;
   }
 
   .deals-frame-14426 {
     width: 100%;
-    max-width: 100%;
-    padding: 0;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
     box-sizing: border-box;
   }
 
+  /* Text: H2 Poppins 600 SemiBold, 32px, Line height 100%, Center, #000000 */
   .deals-title-figma {
-    font-size: 28px;
-    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0;
     text-align: center;
     color: #000000;
-    margin-bottom: 20px;
-    height: auto;
-    min-height: auto;
+    margin: 0;
+    padding: 0;
+    height: 48px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
   }
 
   .deals-row-container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
     width: 100%;
     height: auto;
   }
@@ -4129,19 +4186,36 @@ input, select {
   .deals-col-right-figma {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
     width: 100%;
+    max-width: 580px;
     height: auto;
   }
 
-  .deal-card-left-figma,
-  .deal-card-cabinet-figma {
+  /* Sale frame 2: Fixed (539px), Radius 12px, Padding Top/Bottom 40px, Left/Right 20px */
+  .deal-card-left-figma {
     position: relative;
     width: 100%;
     height: 539px;
     min-height: 539px;
-    border-radius: 16px;
-    padding: 24px 20px;
+    border-radius: 12px;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+  }
+
+  /* Sale frame 2 (Cabinet): Width Fill (400px), Fixed (343px), Radius 12px, Border 0.7px #000000, Padding 28px 20px */
+  .deal-card-cabinet-figma {
+    position: relative;
+    width: 100%;
+    height: 343px;
+    min-height: 343px;
+    border-radius: 12px;
+    border: 0.7px solid #000000;
+    padding: 28px 20px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -4150,6 +4224,7 @@ input, select {
   }
 
   /* Mobile default: text frame at normal scale — scales down only on hover/tap */
+  /* Frame 14405: Width Fill (358.6px - 360px), Height Hug (192px) */
   .deal-text-frame-14405,
   .deal-text-frame-cabinet {
     position: relative;
@@ -4158,6 +4233,7 @@ input, select {
     flex-direction: column;
     gap: 6px;
     width: 100%;
+    max-width: 360px;
     transform: scale(1) translate(0, 0);
     transform-origin: top left;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -4166,17 +4242,26 @@ input, select {
   .deal-card-left-figma:hover .deal-text-frame-14405,
   .deal-card-left-figma.is-active .deal-text-frame-14405,
   .deal-card-left-figma:active .deal-text-frame-14405,
+  .deal-card-left-figma.is-touch-hover .deal-text-frame-14405,
   .deal-card-cabinet-figma:hover .deal-text-frame-cabinet,
   .deal-card-cabinet-figma.is-active .deal-text-frame-cabinet,
-  .deal-card-cabinet-figma:active .deal-text-frame-cabinet {
+  .deal-card-cabinet-figma:active .deal-text-frame-cabinet,
+  .deal-card-cabinet-figma.is-touch-hover .deal-text-frame-cabinet {
     transform: scale(0.82) translateY(-6px);
   }
 
+  /* Frame 14404: Row with DEALS & ON (Monitor Card: gap 12px, Cabinet Card: gap 8.4px, Width 230.4px, Height 73px) */
   .deal-text-frame-14404 {
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    gap: 8px;
+    gap: 12px;
+  }
+
+  .deal-text-frame-cabinet .deal-text-frame-14404 {
+    gap: 8.4px;
+    width: fit-content;
+    max-width: 230.4px;
   }
 
   .deal-text-deals,
@@ -4200,15 +4285,28 @@ input, select {
     text-transform: uppercase;
   }
 
-  /* Mobile default: gradient line fully visible — collapses only on hover/tap */
-  .deal-gradient-line-14406,
-  .deal-gradient-line-cabinet {
+  /* Frame 14406 (Monitor Card): Width 360px, Height 4px, Linear Gradient #FC8E0E -> #D71A4F */
+  .deal-gradient-line-14406 {
     width: 100%;
-    max-width: 280px;
-    height: 3px;
+    max-width: 360px;
+    height: 4px;
     background: linear-gradient(90deg, #FC8E0E 0%, #D71A4F 100%);
     border-radius: 2px;
-    margin: 2px 0;
+    margin: 4px 0 2px 0;
+    opacity: 1;
+    transform: scaleX(1);
+    transform-origin: center;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  }
+
+  /* Frame 14406 (Cabinet Card): Width 358.6px Fill, Height 2.8px, Linear Gradient #FC8E0E -> #D71A4F */
+  .deal-gradient-line-cabinet {
+    width: 100%;
+    max-width: 358.6px;
+    height: 2.8px;
+    background: linear-gradient(90deg, #FC8E0E 0%, #D71A4F 100%);
+    border-radius: 2px;
+    margin: 3px 0 2px 0;
     opacity: 1;
     transform: scaleX(1);
     transform-origin: center;
@@ -4218,25 +4316,44 @@ input, select {
   .deal-card-left-figma:hover .deal-gradient-line-14406,
   .deal-card-left-figma.is-active .deal-gradient-line-14406,
   .deal-card-left-figma:active .deal-gradient-line-14406,
+  .deal-card-left-figma.is-touch-hover .deal-gradient-line-14406,
   .deal-card-cabinet-figma:hover .deal-gradient-line-cabinet,
   .deal-card-cabinet-figma.is-active .deal-gradient-line-cabinet,
-  .deal-card-cabinet-figma:active .deal-gradient-line-cabinet {
+  .deal-card-cabinet-figma:active .deal-gradient-line-cabinet,
+  .deal-card-cabinet-figma.is-touch-hover .deal-gradient-line-cabinet {
     transform: scaleX(0);
     opacity: 0;
   }
 
-  /* Mobile default: MONITORS/CABINET text at rest — shifts up only on hover/tap */
-  .deal-text-monitors,
+  /* Text MONITORS: Bai Jamjuree 700 Italic, 67px, 100% line-height, -4% letter spacing, Linear Gradient #FE940A -> #D1065A */
+  .deal-text-monitors {
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: clamp(48px, 16.75vw, 67px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    background: linear-gradient(90deg, #FE940A 0%, #D1065A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+    margin: 0;
+    transform: translateY(0);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Text CABINET: Bai Jamjuree 700 Italic, 67.2px, 100% line-height, -4% letter spacing, Linear Gradient #FE940A -> #D1065A */
   .deal-text-cabinet {
     font-family: 'Bai Jamjuree', sans-serif;
     font-weight: 700;
     font-style: italic;
-    font-size: 48px;
+    font-size: clamp(48px, 16.8vw, 67.2px);
     line-height: 1;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.04em;
     background: linear-gradient(90deg, #FE940A 0%, #D1065A 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    white-space: nowrap;
     margin: 0;
     transform: translateY(0);
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -4245,141 +4362,152 @@ input, select {
   .deal-card-left-figma:hover .deal-text-monitors,
   .deal-card-left-figma.is-active .deal-text-monitors,
   .deal-card-left-figma:active .deal-text-monitors,
+  .deal-card-left-figma.is-touch-hover .deal-text-monitors,
   .deal-card-cabinet-figma:hover .deal-text-cabinet,
   .deal-card-cabinet-figma.is-active .deal-text-cabinet,
-  .deal-card-cabinet-figma:active .deal-text-cabinet {
+  .deal-card-cabinet-figma:active .deal-text-cabinet,
+  .deal-card-cabinet-figma.is-touch-hover .deal-text-cabinet {
     transform: translateY(-8px);
   }
 
-  /* Mobile popup: hidden by default, slides up on hover/tap (same as desktop animation) */
+  /* Mobile popup: matching user reference media_1789562651108.png */
   .deal-hover-perks-popup,
   .deal-hover-perks-cabinet {
     position: absolute;
-    bottom: 14px;
-    left: 14px;
-    right: 14px;
-    width: calc(100% - 28px);
-    max-width: calc(100% - 28px);
-    height: auto;
-    background: #FFFFFF;
-    border-radius: 16px;
-    padding: 14px 12px;
-    gap: 12px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(125%);
-    transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-    z-index: 10;
+    bottom: 14px !important;
+    left: 14px !important;
+    right: 14px !important;
+    width: calc(100% - 28px) !important;
+    max-width: calc(100% - 28px) !important;
+    height: auto !important;
+    background: #FFFFFF !important;
+    border-radius: 16px !important;
+    padding: 12px !important;
+    gap: 10px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(125%) !important;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease !important;
+    z-index: 10 !important;
   }
 
-  /* Tap / hold / hover triggers the slide-up animation */
+  /* Tap / touch / hover triggers the slide-up animation */
   .deal-card-left-figma:hover .deal-hover-perks-popup,
-  .deal-card-cabinet-figma:hover .deal-hover-perks-cabinet,
   .deal-card-left-figma.is-active .deal-hover-perks-popup,
-  .deal-card-cabinet-figma.is-active .deal-hover-perks-cabinet,
   .deal-card-left-figma:active .deal-hover-perks-popup,
-  .deal-card-cabinet-figma:active .deal-hover-perks-cabinet {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
+  .deal-card-left-figma.is-touch-hover .deal-hover-perks-popup,
+  .deal-card-cabinet-figma:hover .deal-hover-perks-popup,
+  .deal-card-cabinet-figma.is-active .deal-hover-perks-popup,
+  .deal-card-cabinet-figma:active .deal-hover-perks-popup,
+  .deal-card-cabinet-figma.is-touch-hover .deal-hover-perks-popup,
+  .deal-card-cabinet-figma:hover .deal-hover-perks-cabinet,
+  .deal-card-cabinet-figma.is-active .deal-hover-perks-cabinet,
+  .deal-card-cabinet-figma:active .deal-hover-perks-cabinet,
+  .deal-card-cabinet-figma.is-touch-hover .deal-hover-perks-cabinet {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
   }
 
-  .deal-perks-grid-figma {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    gap: 10px;
-    width: 100%;
-    height: auto;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-bottom: 4px;
-    box-sizing: border-box;
+  /* 2x2 Grid exactly matching media_1789562651108.png */
+  .deal-perks-grid-figma,
+  .deal-hover-perks-cabinet .deal-perks-grid-figma {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
   }
 
-  .deal-perks-grid-figma::-webkit-scrollbar {
-    display: none;
-  }
-
-  .deal-perk-card-figma {
-    flex: 0 0 100px;
-    width: 100px;
-    height: 100px;
-    background: #FFAE33;
-    border-radius: 12px;
-    padding: 10px 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    text-align: center;
-    box-sizing: border-box;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    cursor: pointer;
+  .deal-perk-card-figma,
+  .deal-hover-perks-cabinet .deal-perk-card-figma {
+    flex: unset !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 44px !important;
+    background: #FFAE33 !important;
+    border-radius: 10px !important;
+    padding: 8px 10px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    text-align: left !important;
+    box-sizing: border-box !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    cursor: pointer !important;
   }
 
   .deal-perk-card-figma:hover,
   .deal-perk-card-figma:active {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(255, 174, 51, 0.45);
+    box-shadow: 0 4px 12px rgba(255, 174, 51, 0.45);
   }
 
-  .deal-perk-icon-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 32px;
-    width: 32px;
-    flex-shrink: 0;
+  .deal-perk-icon-wrap,
+  .deal-hover-perks-cabinet .deal-perk-icon-wrap {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 24px !important;
+    width: 24px !important;
+    flex-shrink: 0 !important;
   }
 
-  .deal-perk-icon-wrap svg {
-    width: 26px;
-    height: 26px;
+  .deal-perk-icon-wrap svg,
+  .deal-hover-perks-cabinet .deal-perk-icon-wrap svg {
+    width: 20px !important;
+    height: 20px !important;
   }
 
-  .deal-perk-label {
-    font-family: var(--font-primary);
-    font-size: 11px;
-    font-weight: 600;
-    color: #FFFFFF;
-    line-height: 1.25;
-    text-align: center;
-    white-space: normal;
+  .deal-perk-label,
+  .deal-hover-perks-cabinet .deal-perk-label {
+    font-family: var(--font-primary, 'Poppins', sans-serif) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    color: #FFFFFF !important;
+    line-height: 1.2 !important;
+    text-align: left !important;
+    white-space: normal !important;
   }
 
-  .deal-checkout-btn-figma {
-    background-color: #0F172A;
-    color: #FFFFFF;
-    height: 36px;
-    width: auto;
-    min-width: 120px;
-    padding: 0 20px;
-    border-radius: 8px;
-    font-family: var(--font-primary);
-    font-size: 13px;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  .deal-checkout-btn-figma,
+  .deal-hover-perks-cabinet .deal-checkout-btn-figma {
+    background-color: #0F172A !important;
+    color: #FFFFFF !important;
+    height: 32px !important;
+    width: auto !important;
+    min-width: 110px !important;
+    padding: 0 16px !important;
+    border-radius: 999px !important;
+    font-family: var(--font-primary) !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    border: none !important;
+    cursor: pointer !important;
+    margin: 2px auto 0 !important;
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.25) !important;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease !important;
   }
 
   .deal-checkout-btn-figma:hover,
   .deal-checkout-btn-figma:active {
-    background-color: #1E293B;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.35);
+    background-color: #1E293B !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.35) !important;
   }
 
   .deal-checkout-btn-figma svg {
@@ -4394,8 +4522,8 @@ input, select {
   .deal-banner-bottom-figma {
     position: relative;
     width: 100%;
-    height: auto;
-    min-height: 180px;
+    height: 178px;
+    min-height: 178px;
     border-radius: 16px;
     overflow: hidden;
     padding: 16px 14px;
@@ -4543,96 +4671,223 @@ input, select {
     transform: rotate(-135deg);
   }
 
-  /* 7. Footer Mobile */
+  /* 7. Footer Mobile matching Figma Mobile Inspect (Buttom Navbar: 420px x 905px, gap 32px, padding 30px 20px, #0F172A) */
   .site-footer-figma {
     width: 100%;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #0F172A;
   }
 
   .bottom-navbar-frame {
+    display: flex;
     flex-direction: column;
-    padding: 36px 16px 28px;
+    width: 100%;
+    max-width: 420px;
+    min-height: 905px;
+    padding: 30px 20px;
     gap: 32px;
     align-items: center;
-    width: 100%;
-    min-height: auto;
+    background-color: #0F172A;
     box-sizing: border-box;
+    margin: 0 auto;
   }
 
   .footer-left-frame-14368 {
     width: 100%;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 20px;
+    gap: 24px;
+    box-sizing: border-box;
   }
 
+  /* Frame 14322: Width Fill (380px), Height Hug (196px), Gap 24px, Flow Vertical */
   .footer-newsletter-frame-14322 {
     width: 100%;
-    min-height: auto;
+    max-width: 380px;
+    min-height: 196px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 24px;
+    box-sizing: border-box;
   }
 
+  /* Frame 14373: Width Fill (380px), Height Hug (131px), Gap 16px, Flow Vertical */
   .footer-heading-frame-14373 {
     width: 100%;
+    max-width: 380px;
+    min-height: 131px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 16px;
+    box-sizing: border-box;
   }
 
+  /* Text: H2 Poppins SemiBold 600, 32px, line-height 100%, center, #FFFFFF, Width 380px, Height 96px */
   .footer-title-figma {
-    font-size: 20px;
-    line-height: 1.25;
+    width: 100%;
+    max-width: 380px;
+    min-height: 96px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: clamp(26px, 8vw, 32px);
+    line-height: 1;
+    letter-spacing: 0;
     text-align: center;
+    color: #FFFFFF;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
+  /* Subtitle: Poppins 400, 16px, 120% line-height, center, #FFFFFF, 144px x 19px */
   .footer-subtitle-figma {
-    font-size: 13px;
+    width: 144px;
+    height: 19px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.2;
+    letter-spacing: 0;
+    color: #FFFFFF;
+    margin: 0;
+    text-align: center;
   }
 
   .footer-newsletter-form {
     width: 100%;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
   }
 
+  /* Input row (Frame 14324): Horizontal flow, Fill 380px, Height Hug 41px, Gap 24px */
   .footer-input-row-14324 {
     width: 100%;
-    max-width: 320px;
+    max-width: 380px;
     padding: 0;
-    flex-direction: column;
-    gap: 10px;
-    height: auto;
-  }
-
-  .footer-input-frame-14323 {
-    width: 100%;
-    height: 40px;
-  }
-
-  .footer-subscribe-btn-14365 {
-    width: 100%;
-    height: 40px;
-  }
-
-  .footer-social-frame-14367 {
-    width: 100%;
+    display: flex;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    height: 41px;
+    box-sizing: border-box;
+  }
+
+  /* Frame 14323: Fill 250px, Height Hug 37px, Radius 8px, Padding 8px 16px, Gap 8px, Fill #FFFFFF */
+  .footer-input-frame-14323 {
+    width: 250px;
+    flex: 1 1 250px;
+    max-width: 250px;
+    height: 37px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 8px 16px;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .footer-email-input-field {
+    width: 100%;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    color: #0F172A;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0;
+  }
+
+  /* Frame 14365: Hug 106px x Hug 41px, Radius 12px, Border 2px solid #FFFFFF, Padding 8px 16px, Gap 8px */
+  .footer-subscribe-btn-14365 {
+    width: 106px;
+    height: 41px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    border: 2px solid #FFFFFF;
+    padding: 8px 16px;
+    gap: 8px;
+    background: transparent;
+    color: #FFFFFF;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  /* Frame 14367: Hug 184px x Hug 75px, Gap 24px, Flow Vertical */
+  .footer-social-frame-14367 {
+    width: 184px;
+    height: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
     margin: 0 auto;
-    gap: 14px;
+    box-sizing: border-box;
+  }
+
+  .footer-follow-label {
+    width: 184px;
+    height: 27px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1;
+    color: #FFFFFF;
+    text-align: center;
+    margin: 0;
+  }
+
+  /* Frame 14366: Hug 184px x Hug 24px, Gap 16px, Flow Horizontal */
+  .footer-social-icons-14366 {
+    width: 184px;
+    height: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    box-sizing: border-box;
   }
 
   .footer-right-columns {
+    display: flex;
     flex-direction: column;
     width: 100%;
+    max-width: 380px;
     align-items: center;
-    gap: 28px;
+    gap: 32px;
     text-align: center;
+    box-sizing: border-box;
   }
 
   .footer-links-group-14372 {
     width: 100%;
-    justify-content: space-around;
-    gap: 16px;
+    max-width: 380px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
     text-align: left;
+    box-sizing: border-box;
   }
 
   .footer-col-title-14370 {
@@ -4642,9 +4897,13 @@ input, select {
 
   .footer-app-col-14380 {
     width: 100%;
+    max-width: 208px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
     text-align: center;
+    margin: 0 auto;
   }
 
   .footer-app-title-frame-14383 {
@@ -4672,15 +4931,7 @@ input, select {
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 12px;
-  }
-
-  .hero-title-figma {
-    font-size: 26px;
-  }
-
-  .hero-subtext-figma {
-    font-size: 13px;
+    padding: 0 10px;
   }
 
   .best-seller-products-grid {
@@ -4709,3 +4960,161 @@ input, select {
     width: 250px;
   }
 }
+
+/* ==========================================================================
+   Floating Support Chat Widget (Figma Frame 14463 & Frame 14448)
+   ========================================================================== */
+.chat-widget-root {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .chat-widget-root {
+    bottom: 20px;
+    right: 18px;
+    gap: 10px;
+  }
+}
+
+/* Floating Chat Trigger Button (Frame 14463: 72x72, Radius 18px, Drop shadow) */
+.chat-widget-btn {
+  width: 68px;
+  height: 68px;
+  background: #FFFFFF;
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, background-color 0.2s ease;
+  position: relative;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.chat-widget-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.20);
+}
+
+.chat-widget-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.chat-widget-icon-wrapper {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-widget-svg {
+  position: absolute;
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.chat-widget-svg--chat {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.chat-widget-svg--close {
+  opacity: 0;
+  transform: scale(0.5) rotate(-90deg);
+}
+
+.chat-widget-btn.is-active .chat-widget-svg--chat {
+  opacity: 0;
+  transform: scale(0.5) rotate(90deg);
+}
+
+.chat-widget-btn.is-active .chat-widget-svg--close {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+/* Options Stack Panel (Frame 14448) */
+.chat-widget-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.chat-widget-panel.is-open {
+  pointer-events: auto;
+}
+
+.chat-widget-option-pill {
+  background: #FFFFFF;
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  border-radius: 9999px;
+  padding: 8px 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  outline: none;
+  opacity: 0;
+  transform: translateY(14px) scale(0.94);
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background-color 0.2s ease;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.chat-widget-panel.is-open .chat-widget-option-pill {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.chat-widget-option-pill:hover {
+  background: #F8FAFC;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+}
+
+.chat-widget-option-pill:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.chat-widget-option-emoji {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.chat-widget-option-label {
+  font-family: var(--font-primary, 'Poppins', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: #0F172A;
+  line-height: 1.2;
+}
+
+@media (max-width: 480px) {
+  .chat-widget-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+  }
+  .chat-widget-option-pill {
+    padding: 7px 14px;
+    font-size: 12px;
+  }
+  .chat-widget-option-label {
+    font-size: 12px;
+  }
+}
+

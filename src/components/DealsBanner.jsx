@@ -51,6 +51,8 @@ export default function DealsBanner({ onSelectCategory, onViewAllDeals }) {
             onClick={() => handleCardClick('monitors')}
             onMouseEnter={() => handleMouseEnter('monitors')}
             onMouseLeave={handleMouseLeave}
+            onTouchStart={() => setActiveDealCard('monitors')}
+            onPointerEnter={() => handleMouseEnter('monitors')}
             role="button"
             tabIndex={0}
           >
@@ -152,6 +154,8 @@ export default function DealsBanner({ onSelectCategory, onViewAllDeals }) {
               onClick={() => handleCardClick('cabinet')}
               onMouseEnter={() => handleMouseEnter('cabinet')}
               onMouseLeave={handleMouseLeave}
+              onTouchStart={() => setActiveDealCard('cabinet')}
+              onPointerEnter={() => handleMouseEnter('cabinet')}
               role="button"
               tabIndex={0}
             >
